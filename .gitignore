@@ -2,7 +2,8 @@
 .DS_Store
 .env
 .env.backup
-.env.production
+# .env.production is intentionally committed (no secrets — used by Docker entrypoint)
+# .env.production
 .phpactor.json
 .phpunit.result.cache
 /.fleet

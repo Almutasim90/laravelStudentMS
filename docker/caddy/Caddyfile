@@ -1,0 +1,25 @@
+sms.almutasim.site {
+
+    # Automatic HTTPS — Caddy fetches Let's Encrypt cert automatically
+    # No configuration needed — just point your DNS A record to this server's IP
+
+    reverse_proxy app:80
+
+    # Encode responses
+    encode gzip zstd
+
+    # Security headers
+    header {
+        Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+        X-Content-Type-Options "nosniff"
+        X-Frame-Options "SAMEORIGIN"
+        Referrer-Policy "strict-origin-when-cross-origin"
+        -Server
+    }
+
+    # Logging
+    log {
+        output stdout
+        format console
+    }
+}
